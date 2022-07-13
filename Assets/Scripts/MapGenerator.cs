@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 [Serializable]
 public class MapPack
@@ -15,11 +16,15 @@ public class MapGenerator : MonoBehaviour
     public string dataPath;
     public List<Dictionary<string,object>> data;
     public GameMgr gameMgr;
-    
+
+    [SerializeField] 
+    private Transform Map12x12;
+    [SerializeField] 
+    private Transform Ground12x12;
+
 
     void Start()  // 처음 시작시 실행되는 함수입니다.
     {
-        gameMgr=GameObject.Find("GameMgr").GetComponent<GameMgr>();
         LoadMapData(1);
         
         for (int i = 0; i < 12; i++)
@@ -28,7 +33,7 @@ public class MapGenerator : MonoBehaviour
             {
                 GameObject ground = Instantiate(mapObjectPrefab[0]) as GameObject;
                 ground.gameObject.name = ground.tag + "(" + j + ", " + i + ")";
-                ground.transform.parent = GameObject.Find("Ground12x12").transform;
+                ground.transform.parent = Ground12x12.transform;
                 ground.transform.localPosition = new Vector3(j, 0, i);
             }
             
@@ -59,11 +64,11 @@ public class MapGenerator : MonoBehaviour
 
                         
                         mapObj1.name = mapObj1.tag + "(" + i + ", " + j + ")";
-                        mapObj1.transform.parent = GameObject.Find("Map12x12").transform;
+                        mapObj1.transform.parent = Map12x12.transform;
                         mapObj1.transform.localPosition = new Vector3(i, 0, j);
                         mapPack.map.Add(mapObj1);
                         mapObj2.name = mapObj2.tag + "(" + i + ", " + j + ")";
-                        mapObj2.transform.parent = GameObject.Find("Map12x12").transform;
+                        mapObj2.transform.parent = Map12x12.transform;
                         mapObj2.transform.localPosition = new Vector3(i, 0, j);
                         mapPack.map.Add(mapObj2);
 
@@ -78,26 +83,26 @@ public class MapGenerator : MonoBehaviour
                         {
                             case "Wall":
                                 mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = GameObject.Find("Map12x12").transform;
+                                mapObj.transform.parent = Map12x12.transform;
                                 mapObj.transform.localPosition = new Vector3(i, 0, j);
                                 mapPack.map.Add(mapObj);
                                 break;
                             case "Bucket":
                                 mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = GameObject.Find("Map12x12").transform;
+                                mapObj.transform.parent = Map12x12.transform;
                                 mapObj.transform.localPosition = new Vector3(i, 0, j);
                                 mapPack.map.Add(mapObj);
                                 break;
                             case "Ball":
                                 mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = GameObject.Find("Map12x12").transform;
+                                mapObj.transform.parent = Map12x12.transform;
                                 mapObj.transform.localPosition = new Vector3(i, 0, j);
                                 mapPack.map.Add(mapObj);
                                 break;
 
                             case "Player":
                                 mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = GameObject.Find("Map12x12").transform;
+                                mapObj.transform.parent = Map12x12.transform;
                                 mapObj.transform.localPosition = new Vector3(i, 0, j);
                                 mapPack.map.Add(mapObj);
                                 break;

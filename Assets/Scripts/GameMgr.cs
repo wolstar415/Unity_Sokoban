@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine.UI;
 
 public class GameMgr : MonoBehaviour
 {
+    public static GameMgr inst;
+
+    private void Awake() => inst = this;
+
     public GameObject[] buckets;
     public GameObject[] balls;
     public int curCnt = 0;
