@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
                                 break;
 
                             default:
-                                Debug.LogError("있으면 오류");
                                 break;
                         }
                     }

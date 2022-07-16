@@ -76,39 +76,58 @@ public class MapGenerator : MonoBehaviour
                         mapObj2.GetComponent<Ball_Check>().Bucket = mapObj1;
                         gameMgr.curCnt++;
                     }
+                    else if (dataSet == 6)
+                    {
+                        GameObject mapObj1 = Instantiate(mapObjectPrefab[1]);
+                        GameObject mapObj2 = Instantiate(mapObjectPrefab[4]);
+
+                        
+                        mapObj1.name = mapObj1.tag + "(" + i + ", " + j + ")";
+                        mapObj1.transform.parent = Map12x12.transform;
+                        mapObj1.transform.localPosition = new Vector3(i, 0, j);
+                        mapPack.map.Add(mapObj1);
+                        mapObj2.name = mapObj2.tag + "(" + i + ", " + j + ")";
+                        mapObj2.transform.parent = Map12x12.transform;
+                        mapObj2.transform.localPosition = new Vector3(i, 0, j);
+                        mapPack.map.Add(mapObj2);
+                    }
                     else
                     {
                     GameObject mapObj = Instantiate(mapObjectPrefab[dataSet]) as GameObject;
-                        switch (mapObj.tag)
-                        {
-                            case "Wall":
-                                mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = Map12x12.transform;
-                                mapObj.transform.localPosition = new Vector3(i, 0, j);
-                                mapPack.map.Add(mapObj);
-                                break;
-                            case "Bucket":
-                                mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = Map12x12.transform;
-                                mapObj.transform.localPosition = new Vector3(i, 0, j);
-                                mapPack.map.Add(mapObj);
-                                break;
-                            case "Ball":
-                                mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = Map12x12.transform;
-                                mapObj.transform.localPosition = new Vector3(i, 0, j);
-                                mapPack.map.Add(mapObj);
-                                break;
-
-                            case "Player":
-                                mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
-                                mapObj.transform.parent = Map12x12.transform;
-                                mapObj.transform.localPosition = new Vector3(i, 0, j);
-                                mapPack.map.Add(mapObj);
-                                break;
-                            default:
-                                break;
-                        }
+                    mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
+                    mapObj.transform.parent = Map12x12.transform;
+                    mapObj.transform.localPosition = new Vector3(i, 0, j);
+                    mapPack.map.Add(mapObj);
+                        // switch (mapObj.tag)
+                        // {
+                        //     case "Wall":
+                        //         mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
+                        //         mapObj.transform.parent = Map12x12.transform;
+                        //         mapObj.transform.localPosition = new Vector3(i, 0, j);
+                        //         mapPack.map.Add(mapObj);
+                        //         break;
+                        //     case "Bucket":
+                        //         mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
+                        //         mapObj.transform.parent = Map12x12.transform;
+                        //         mapObj.transform.localPosition = new Vector3(i, 0, j);
+                        //         mapPack.map.Add(mapObj);
+                        //         break;
+                        //     case "Ball":
+                        //         mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
+                        //         mapObj.transform.parent = Map12x12.transform;
+                        //         mapObj.transform.localPosition = new Vector3(i, 0, j);
+                        //         mapPack.map.Add(mapObj);
+                        //         break;
+                        //
+                        //     case "Player":
+                        //         mapObj.name = mapObj.tag + "(" + i + ", " + j + ")";
+                        //         mapObj.transform.parent = Map12x12.transform;
+                        //         mapObj.transform.localPosition = new Vector3(i, 0, j);
+                        //         mapPack.map.Add(mapObj);
+                        //         break;
+                        //     default:
+                        //         break;
+                        // }
                     }
 
                     

@@ -17,7 +17,7 @@ public class GameMgr : MonoBehaviour
     public int correctCnt;
     public int insCorrectCnt;
     public int curLv = 1;
-    public int maxLv = 20;
+    public int maxLv;
     public MapGenerator mapGenerator;
     public Text roundtext;
     public Text movetext;
@@ -27,6 +27,18 @@ public class GameMgr : MonoBehaviour
     private void Start()
     {
         mapGenerator = GameObject.Find("Map12x12").GetComponent<MapGenerator>();
+
+        int cnt=0;
+        while (true)
+        {
+            cnt++;
+            if (!Resources.Load("Maps/Lv"+cnt))
+            {
+                break;
+            }
+        }
+
+        maxLv = cnt-1;
     }
     public void movemove()
     {

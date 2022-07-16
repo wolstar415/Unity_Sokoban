@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,7 @@ MonoBehaviour:
   correctCnt: 0
   insCorrectCnt: 0
   curLv: 1
-  maxLv: 30
+  maxLv: 34
   mapGenerator: {fileID: 0}
   roundtext: {fileID: 1020859800}
   movetext: {fileID: 306908853}
@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -465,7 +466,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Move 9999
+  m_Text: 
 --- !u!222 &306908854
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1344,7 +1345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stage 99
+  m_Text: 
 --- !u!222 &1020859801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2146,7 +2147,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Best Move 9999
+  m_Text: 
 --- !u!222 &1686459097
 CanvasRenderer:
   m_ObjectHideFlags: 0
