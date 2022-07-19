@@ -26,7 +26,6 @@ public class GameMgr : MonoBehaviour
 
     private void Start()
     {
-        mapGenerator = GameObject.Find("Map12x12").GetComponent<MapGenerator>();
 
         int cnt=0;
         while (true)
@@ -96,34 +95,6 @@ public class GameMgr : MonoBehaviour
         //Debug.Log("MAX COUNT :::: " + maxCnt);
 
     }
-
-    public void CheckBall()
-    {
-        for (int i = 0; i < buckets.Length; i++)
-        {
-            for (int j = 0; j < balls.Length; j++)
-            {
-                if (buckets[i].transform.position == balls[j].transform.position)
-                {
-                    correctCnt++;
-                    curCnt = correctCnt;
-                }
-            }
-        }
-
-        correctCnt = 0;
-        if (curCnt == maxCnt)
-        {
-            Debug.Log("Game Clear!!!!!!");
-            curLv++;
-            curCnt = 0;
-            maxCnt = 0;
-            if (curLv != maxLv)
-                mapGenerator.MapDestory(curLv);
-            else
-                Debug.Log("Game All Clear!!!!!!!");
-
-        }
-    }
+    
 
 }
