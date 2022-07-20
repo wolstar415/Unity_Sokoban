@@ -8,21 +8,37 @@ public class SoKoban_Editor : EditorWindow
 #if UNITY_EDITOR
 
     public Texture2D[] icon = new Texture2D[10];
+    //아이콘들 입니다.
     public int[] BtnIconNum = new int[144];
     public Button[] btn = new Button[144];
+    //버튼 정보입니다 보통 구조체나 클래스로 만들어도 되는데 규모가 작기 때문에 변수로 만들었습니다
+
     public int currentLevel = 0;
+    //현재 레벨
+
     public int selectint = 0;
+    //타일버튼을 선택한 인덱스
+
     public BaseField<int> levelField;
+    //정수필드
 
     [MenuItem("Tools/sokoban_Editor")]
     public static void ShowExample()
     {
         SoKoban_Editor wnd = GetWindow<SoKoban_Editor>();
+        //불러옵니다.
         wnd.titleContent = new GUIContent("sokoban Editor");
+        Vector2 size = new Vector2(750f,850f);
+        wnd.minSize = size;
+        wnd.maxSize = size;
+        //사이즈 설정
+
+
     }
 
     public void CreateGUI()
     {
+        icon[0] = null;
         icon[1] = Resources.Load<Texture2D>("wall");
         icon[2] = Resources.Load<Texture2D>("go");
         icon[3] = Resources.Load<Texture2D>("box");
@@ -38,40 +54,36 @@ public class SoKoban_Editor : EditorWindow
         var styleSheet = (StyleSheet)EditorGUIUtility.Load("Sokoban_Editor.uss");
         rootVisualElement.styleSheets.Add(styleSheet);
         
+        //EditorGUIUtility.Load는 Editor Default Resources폴더안에있는 파일들을 불러옵니다.
         //UXML 와 USS 를 불러옵니다.
 
 
         levelField = rootVisualElement.Q<BaseField<int>>("IntegerField");
         levelField.RegisterValueChangedCallback((evt) => { LoadBtn(evt.newValue); });
+        //정수
+        
+        
         rootVisualElement.Q<Button>("NewBtn").clicked += NewBtn;
         rootVisualElement.Q<Button>("OpenBtn").clicked += OpenBtn;
         rootVisualElement.Q<Button>("SaveBtn").clicked += SaveBtn;
-
-        rootVisualElement.Q<Button>("HelpBtn_X").clicked += HelpSelect_X;
-        rootVisualElement.Q<Button>("HelpBtn_X").tooltip = "칸 삭제";
-
-        rootVisualElement.Q<Button>("HelpBtn_wall").clicked += HelpSelect_wall;
-        rootVisualElement.Q<Button>("HelpBtn_wall").tooltip = "벽";
-
-        rootVisualElement.Q<Button>("HelpBtn_go").clicked += HelpSelect_go;
-        rootVisualElement.Q<Button>("HelpBtn_go").tooltip = "목표점";
-
-        rootVisualElement.Q<Button>("HelpBtn_box").clicked += HelpSelect_box;
-        rootVisualElement.Q<Button>("HelpBtn_box").tooltip = "박스";
-
-        rootVisualElement.Q<Button>("HelpBtn_player").clicked += HelpSelect_player;
-        rootVisualElement.Q<Button>("HelpBtn_player").tooltip = "플레이어 한개는 무조건 있어야함";
-
-        rootVisualElement.Q<Button>("HelpBtn_boxAndgo").clicked += HelpSelect_boxAndgo;
-        rootVisualElement.Q<Button>("HelpBtn_boxAndgo").tooltip = "목표점위에상자";
-
-        rootVisualElement.Q<Button>("HelpBtn_playerAndgo").clicked += HelpSelect_playerAndgo;
-        rootVisualElement.Q<Button>("HelpBtn_playerAndgo").tooltip = "목표점위에플레이어";
+        //버튼들 클릭시 함수
         
-        //툴팁 설정 및 버튼 이벤트 설정합니다.
+        
+        
+        rootVisualElement.Q<Button>("HelpBtn_X").clicked += HelpSelect_X;
+        rootVisualElement.Q<Button>("HelpBtn_wall").clicked += HelpSelect_wall;
+        rootVisualElement.Q<Button>("HelpBtn_go").clicked += HelpSelect_go;
+        rootVisualElement.Q<Button>("HelpBtn_box").clicked += HelpSelect_box;
+        rootVisualElement.Q<Button>("HelpBtn_player").clicked += HelpSelect_player;
+        rootVisualElement.Q<Button>("HelpBtn_boxAndgo").clicked += HelpSelect_boxAndgo;
+        rootVisualElement.Q<Button>("HelpBtn_playerAndgo").clicked += HelpSelect_playerAndgo;
+        
+        
+        //타일버튼 클릭 이벤트
 
 
-        var test1 = rootVisualElement.Q<VisualElement>("BtnTool");
+        VisualElement test1 = rootVisualElement.Q<VisualElement>("BtnTool");
+        //VisualElement "BtnTool"를 불러옵니다
         
         for (int i = 0; i < 144; i++)
         {
